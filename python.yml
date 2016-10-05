@@ -1,0 +1,16 @@
+---
+- hosts: dockers
+
+  tasks:
+
+   - name: Copy EPEL yum repo
+     copy: src=/etc/yum.repos.d/epel.repo dest=/etc/yum.repos.d/epel.repo
+
+   - name: Install python
+     yum: name=python state=latest
+
+   - name: Install pip
+     yum: name=python-pip state=latest disable_gpg_check=yes
+
+   - name: Install docker-py module
+     pip: name=docker-py

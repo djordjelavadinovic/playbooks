@@ -1,0 +1,13 @@
+---
+- hosts: docker1.antegra.com
+
+  tasks:
+
+   - name: Reload api-mocks
+     docker:
+       name: api-mocks
+       image: djordjelavadinovic/api-mocks
+       state: reloaded
+       pull: always
+       ports:
+         - 8000:8000

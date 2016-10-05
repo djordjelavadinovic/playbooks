@@ -1,0 +1,27 @@
+---
+- hosts: dockers
+
+  tasks:
+    - name: install samba client
+      yum: name={{ item }} state=latest 
+      with_items:
+        - samba-client
+        - cifs-utils
+
+    - name: create folders
+      file: path={{ item }} state=directory
+      with_items:
+        - /root/conf
+        - /docker-share
+
+    - name: copy credentials
+      copy: src=samba-user.cred dest=/root/conf/samba-user.cred
+
+    - name: mount shared folders
+      mount: state=present
+             fstype=cifs
+             src={{ item.src }}
+             name={{ item.name }}
+             opts="credentilas=/root/conf/samba-user.cred"
+      with_items:
+        - { name: "/docker-share", src: "//domacica/docker-share" }

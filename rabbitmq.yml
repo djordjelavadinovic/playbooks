@@ -1,0 +1,19 @@
+---
+- hosts: dockers
+
+  tasks:
+
+   - name: Reload rabbitmq
+     docker:
+       name: asee-rabbitmq
+       image: djordjelavadinovic/asee-rabbitmq
+       state: reloaded
+       pull: always
+       ports:
+         - 4369:4369
+         - 5671:5671
+         - 5672:5672
+         - 15672:15672
+         - 15674:15674
+         - 25672:25672
+         - 61613:61613

@@ -1,0 +1,22 @@
+---
+- hosts: dockers
+
+  tasks:
+
+   - name: Reload api-mocks
+     docker:
+       name: api-mocks
+       image: djordjelavadinovic/api-mocks
+       state: reloaded
+       pull: always
+       ports:
+         - 8000:8000
+
+   - name: Reload asee-bpm
+     docker:
+       name: asee-bpm
+       image: djordjelavadinovic/asee-bpm
+       state: reloaded
+       pull: always
+       ports:
+         - 8080:8080
