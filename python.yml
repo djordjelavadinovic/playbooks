@@ -1,5 +1,5 @@
 ---
-- name Install Python and pip
+- name: Install Python and pip
   hosts: all
   tasks:
   
