@@ -1,8 +1,8 @@
 ---
-#- hosts: dockers
-
-#  tasks:
-
+- name Install Python and pip
+  hosts: all
+  tasks:
+  
    - name: Copy EPEL yum repo
      copy: src=/etc/yum.repos.d/epel.repo dest=/etc/yum.repos.d/epel.repo
 
