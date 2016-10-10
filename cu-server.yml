@@ -1,0 +1,7 @@
+---
+- hosts: dockers
+
+  tasks:
+
+   - name: Pull source repo from github
+     git: repo=http://github.com/asseco-see/carbon dest=/home/carbon
