@@ -1,5 +1,7 @@
 ---
-- hosts: dockers
+- name: Build & deploy cu-server and domainsrv
+  hosts: all
+  tasks:
 
   tasks:
 
